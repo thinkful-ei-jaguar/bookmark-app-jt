@@ -3,12 +3,19 @@ import $ from 'jquery';
 import store from './store';
 import api from './api';
 
-const generateBookmarkElement = function (item) {
-    //begin inserting HTML
+const generateBookmarkElement = function (bMark) {
+    let bookmarkTitle = `<span class="">${bMark.name}</span>`;
+    if (!item.checked) {
+    itemTitle = `
+      <form class="js-edit-item">
+        <input class="shopping-item" type="text" value="${item.name}" />
+      </form>
+    `;
 }
 
 const generateBookmarkListString = function (bookmarkList) {
-
+    const bMarks = bookmarkList.map((bMark) => generateBookmarkElement(bMark));
+    return bMarks.join('');
 };
 
 const render = function () {
@@ -46,4 +53,4 @@ const bindEventListeners = function () {
 export default {
     render,
     bindEventListeners
-  };
+  }

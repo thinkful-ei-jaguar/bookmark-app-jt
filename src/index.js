@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-import 'normalize.css';
 import './main.css';
 
 import bookmarksList from './bookmarks-list';
@@ -8,7 +7,7 @@ import api from './api';
 import store from './store';
 
 const main = function () {
-    api.getBookmarks()
+       api.getBookmarks()
       .then(res => res.json())
       .then((bMarks) => {
         bMarks.forEach((bMark) => store.addNewBookmark(bMark));
