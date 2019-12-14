@@ -9,7 +9,7 @@
     background-position: top center;
   }
 
-main {
+main, .error {
     max-width: 400px;
     display: flex;
     -ms-flex-wrap: wrap;

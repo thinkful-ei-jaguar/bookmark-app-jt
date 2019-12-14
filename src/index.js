@@ -1,10 +1,27 @@
 import $ from 'jquery';
 
-function main() {
-  console.log('DOM is loaded');
+import 'normalize.css';
+import './main.css';
 
-  const startMsg = $('<p>Webpack is working!</p>');
-  $('#root').append(startMsg);
-}
+import bookmarksList from './bookmarks-list';
+import api from './api';
+import store from './store';
+
+const main = function () {
+    api.getBookmarks()
+      .then(res => res.json())
+      .then((bMarks) => {
+        bMarks.forEach((bMark) => store.addNewBookmark(bMark));
+        shoppingList.render();
+
+        /*const item = store.bookmarks[0];
+        console.log('current name: ' + item.name);
+        store.findAndUpdate(item.id, { name: 'barbaz' });
+        console.log('new name: ' + item.name);*/
+        
+      });
+    bookmarksList.bindEventListeners();
+    bookmarksList.render();
+  };
 
 $(main);
