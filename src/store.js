@@ -13,8 +13,8 @@ const filterBy = function () {
 
 };
 
-const addNewBookmark = function () {
-
+const addNewBookmark = function (bmark) {
+    this.bookmarks.push(bmark);
 };
 
 const editBookmark = function () {

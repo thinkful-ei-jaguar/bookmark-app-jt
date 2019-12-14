@@ -11,7 +11,7 @@ const main = function () {
       .then(res => res.json())
       .then((bMarks) => {
         bMarks.forEach((bMark) => store.addNewBookmark(bMark));
-        shoppingList.render();
+        bookmarkList.render();
 
         /*const item = store.bookmarks[0];
         console.log('current name: ' + item.name);

@@ -2,8 +2,9 @@ const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jt/bookmarks';
 
 const getBookmarks = function() {
     return fetch (`${BASE_URL}/bookmarks`);
+    
   };
-  
+  console.log(getBookmarks);
   const createBookmark = function(name) {
     let newBookmark = JSON.stringify({
       'name': name,
