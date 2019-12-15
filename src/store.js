@@ -1,9 +1,8 @@
-const store = {
-    bookmarks: [],
-    adding: false,
-    error: null,
-    filter: 0
-  };
+const bookmarks = [];
+  let adding = false;
+  let error =null;
+  let filter = 0;
+  
 
   const findById = function (id) {
     return bookmarks.find(currentBookmark => currentBookmark.id === id);
@@ -14,7 +13,7 @@ const filterBy = function () {
 };
 
 const addNewBookmark = function (bmark) {
-    this.bookmarks.push(bmark);
+    bookmarks.push(bmark);
 };
 
 const editBookmark = function () {
@@ -34,6 +33,5 @@ findById,
 filterBy,
 addNewBookmark,
 editBookmark,
-deleteBookmark,
-
+deleteBookmark
 };

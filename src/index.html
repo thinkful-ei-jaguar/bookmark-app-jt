@@ -10,14 +10,29 @@
   <div class="container">
     <h1>My Bookmarks</h1>
     <form id="js-bookmark-list-form">
-            <button type="submit" class="js-bookmark-list-entry"> + New </button> 
-            <select class="filter-books">
-                <option value="js-bookmark-list-filter">Filter Options</option>
-                <option value="minimum">Low to High Rating</option>
-                <option value="maximum">High to Low Rating</option>
-            </select><br>
+      <button type="submit" class="js-bookmark-list-entry"> + New </button>
+      <select class="filter-books">
+        <option value="js-bookmark-list-filter">Filter Options</option>
+        <option value="minimum">Low to High Rating</option>
+        <option value="maximum">High to Low Rating</option>
+      </select><br>
+    </form>
+    <form id= "js-create-new-bookmark">
+      <label for='add-book' class='add'>Add New Bookmark</label><br>
+      <input class='input-book' type='text' name='url' id='add-book' placeholder='link to website' required><br>
+      <input type="text" name="title" placeholder="bookmark name"></input><br>
+      <select type="radio">
+        <option value="1">1 star</option>
+        <option value="2">2 stars</option>
+        <option value="3">3 stars</option>
+        <option value="4">4 stars</option>
+        <option value="5">5 stars</option>
+      </select><br>
+      <textarea name="" id="" cols="30" rows="10"></textarea><br>
+      <button class="cancel-button">Cancel</button> <button class="create-button">Create</button>
     </form>
     <ul class="bookmark-list js-bookmark-list">
+      <li class="js-bookmark-entry"></li>
     </ul>
   </div>
 
