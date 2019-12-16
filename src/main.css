@@ -1,4 +1,15 @@
+.js-bookmark-entry {
+  display: inline-block;
+}
 
+
+
+
+
+
+
+
+/* 
  {
     box-sizing: border-box;
   }
@@ -67,4 +78,4 @@ h1 {
 
 .book-description {
     border: 1pt solid black;
-}
+} */
