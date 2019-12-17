@@ -8,7 +8,6 @@ import store from './store';
 
 const main = function () {
   api.getBookmarks()  
-  .then(res => res.json())
   .then((items) => {
     items.forEach((item) => store.addNewBookmark(item));
     bookmarksList.render();

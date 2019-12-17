@@ -12,16 +12,31 @@ const filterBy = function () {
 
 };
 
+const toggleBookmark = function (id){
+let bookmark = findById(id);
+console.log(id);
+bookmark.expanded = !bookmark.expanded; 
+
+
+}
+
 const addNewBookmark = function (bmark) {
-    bookmarks.push(bmark);
-};
-
-const editBookmark = function () {
+  bmark.expanded = false;  
+  bookmarks.push(bmark);
 
 };
 
-const deleteBookmark = function () {
+const editBookmark = function (id, newData) {
+  let foundItem = this.findById(id);
+  Object.assign(foundItem, newData);
+};
 
+const deleteBookmark = function (id) {
+  this.bookmarks = this.bookmarks.filter(currentItem => currentItem.id !== id);
+
+};
+const setError = function (error) {
+  this.error = error;
 };
 
 export default {
@@ -33,5 +48,7 @@ findById,
 filterBy,
 addNewBookmark,
 editBookmark,
-deleteBookmark
+deleteBookmark,
+toggleBookmark,
+setError
 };
