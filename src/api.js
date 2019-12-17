@@ -6,21 +6,22 @@ const getBookmarks = function () {
 };
 
 
-const createBookmark = function (title, rating, url, desc) {
-  let newBookmark = JSON.stringify({
-    title,
-    rating,
-    url,
-    desc,
+const createBookmark = function (body) {
 
-  });
+  // let newBookmark = JSON.stringify({
+  //   title,
+  //   rating,
+  //   url,
+  //   desc,
+
+  // });
 
   return fetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: newBookmark
+    body: body
   });
 };
 

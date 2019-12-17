@@ -25,16 +25,12 @@ const generateBookmarkElement = function (bMark) {
         </button>
       </div>
     </li><br>`;
-
 };
-
 const generateBookmarkListString = function (bookmarkList) {
-    const bMs= bookmarkList.map((bM) => 
-    {  
+    const bMs= bookmarkList.map((bM) => {  
      const bookmarkString = generateBookmarkElement(bM)
      return bookmarkString;
-    }
-    );
+    });
     return bMs.join('');
 };
 
@@ -59,18 +55,11 @@ const render = function () {
         <button type="reset" class="cancel-button">Cancel</button> <button type ="submit" class="create-button">Create</button>
         </form>`
     }
-    // else {
-    //     $("#js-bookmarks-list-form").show();
-    //     $("#js-create-new-bookmark").blur();
-    //     $("#js-create-new-bookmark").hide();
-    // }
-    // render the shopping list in the DOM
-    $('.add-new-bookmark-form').html(form);
+    
     const bookmarkListItemsString = generateBookmarkListString(store.bookmarks);
     
-    // insert that HTML into the DOM
     $('.js-bookmark-list').html(bookmarkListItemsString);
-
+    $('.add-new-bookmark-form').html(form);
 };
 
 /*const addBookmark = function () {
@@ -104,28 +93,23 @@ const handleCancelBookmark = function (){
 }
 
 const handleNewBookmarkSubmit = function () {
-    $('#js-create-new-bookmark').on('submit', '.create-button', event => {
+    $('.js-bookmark-list').on('submit', '.create-button', event => {
         event.preventDefault();
-        console.log('handle new bookmark');
-        const newBmarkTitle = $('.js-bookmark-list').val();
-        //const newBmarkRating = $('.js-bookmark-entry').val();
-        //const newBmarkUrl = $('.js-bookmark-entry').val();
-        //const newBmarkDesc = $('.js-bookmark-entry').val();
-//use parseInt to convert string to integer
+
+let formElement = $('.create-button')[0];
+console.log( serializeJson(formElement) );
+
+        let newBmarkTitle = serializeJson(formElement);
+       
         api.createBookmarks(newBmarkTitle)
             .then(res => res.json())
             .then(newItem => {
-                console.log(newItem);
                 store.addNewBookmark(newItem);
+                store.adding = false;
                 render();
             })
-            .catch(err => {
-                // store.setError(err.message);
-                console.log(err)
-                render();
-            });
-        store.addNewBookmark(newBmarkTitle);
-        render();
+        // store.addNewBookmark(newBmarkTitle);
+        // render();
     });
 };
 
