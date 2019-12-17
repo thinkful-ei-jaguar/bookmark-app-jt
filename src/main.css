@@ -1,7 +1,31 @@
+{
+  box-sizing: border-box;
+}
+
+body {
+  
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+  background-size: 60%;
+  background-position: top center;
+}
 .js-bookmark-entry {
   display: inline-block;
 }
-
+ul {
+  padding-inline-start: 0;
+}
+.bookmark-list {
+  margin-left: 300px;
+  margin-right: 300px;
+  border: 2pt solid black;
+}
 .error-container {
   color: red;
   font-weight: bold;

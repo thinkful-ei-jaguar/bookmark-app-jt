@@ -4,7 +4,7 @@ import store from './store';
 import api from './api';
 
 const generateBookmarkElement = function (bMark) {
-    let bookmarkTitle = `<span class="js-bookmark-entry" data-item-id="${bMark.id}">${bMark.title}     ${bMark.rating}</span>`;
+    let bookmarkTitle = `<span class="js-bookmark-entry" data-item-id="${bMark.id}">${bMark.title}     ${bMark.rating} Star Rating</span>`;
     console.log(bMark);
     let expandedInfo = '';
     if (bMark.expanded === true) {
@@ -40,7 +40,7 @@ const generateForm = function () {
         <input class='input-book' type='text'  name='url' id='add-book' placeholder='link to website' required></input><br>
         <input type="text" class="bookmark-title"name="title" placeholder="bookmark name"></input><br>
         <select class="star-select" type="radio" >
-          <option class="fa fa-star checked" value="1">1 Star</i></option>
+          <option class="fa fa-star checked" value="1 Star">1 Star</i></option>
           <option class="fa fa-star checked" value="2">2 stars</option>
           <option class="fa fa-star checked" value="3">3 stars</option>
           <option class="fa fa-star checked" value="4">4 stars</option>
@@ -82,14 +82,16 @@ const render = function () {
     
 
     const bookmarkListItemsString = generateBookmarkListString(store.bookmarks);
-
-    $('.js-bookmark-list').html(bookmarkListItemsString);
     $('.add-new-bookmark-form').html(generateForm());
+    $('.js-bookmark-list').html(bookmarkListItemsString);
     
     const itemsToShow = store.bookmarks.filter(item => item.rating >= store.currentFilter);
-    const itemsString = itemsToShow.map(item => generateBookmarkElement(item)
-    );
+    const itemsString = itemsToShow.map(item => generateBookmarkElement(item));
     $('.js-bookmark-list').html(itemsString.join(''));
+
+
+  
+    
 };
 
 const handleCreateNewBookmark = function () {
@@ -114,13 +116,14 @@ const handleNewBookmarkSubmit = function () {
         let newUrlName = $('.input-book').val();
         let newBookmarkDesc = $('#text-area').val();
         let newBookmarkName = $('.bookmark-title').val();
-        let newRating =$('.checked').val();
+        let newRating =$('.star-select').val();
         const newBookmarkEntry = {
             title: newBookmarkName,
             url: newUrlName,
             desc: newBookmarkDesc,
             rating: newRating
         };
+        console.log(newBookmarkEntry);
         api.createBookmark(newBookmarkEntry)
             .then(newItem => {
                 store.addNewBookmark(newItem);
