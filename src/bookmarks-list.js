@@ -33,33 +33,38 @@ const generateBookmarkListString = function (bookmarkList) {
     });
     return bMs.join('');
 };
-
-const render = function () {
-    //console.log('render ran');
-    // Filter item list if store prop is true by item.checked === false
-    let form = '';
+const generateForm = function (){
+let form = '';
     if (store.adding === true) {
         form = `
         <form id= "js-create-new-bookmark">
         <label for='add-book' class='add' >Add New Bookmark</label><br>
         <input class='input-book' type='text'  name='url' id='add-book' placeholder='link to website' required><br>
-        <input type="text" name="title" placeholder="bookmark name"></input><br>
-        <select type="radio" >
+        <input type="text" class="bookmark-title"name="title" placeholder="bookmark name"></input><br>
+        <select class="star-select" type="radio" >
           <option value="1">1 star</option>
           <option value="2">2 stars</option>
           <option value="3">3 stars</option>
           <option value="4">4 stars</option>
           <option value="5">5 stars</option>
         </select><br>
-        <textarea name="" id="" cols="30" rows="10"></textarea><br>
-        <button type="reset" class="cancel-button">Cancel</button> <button type ="submit" class="create-button">Create</button>
+        <textarea name="" id="text-area" cols="30" rows="10"></textarea><br>
+        <button type="reset" class="cancel-button">Cancel</button> <button  class="create-button">Create</button>
         </form>`
     }
+    return form;
+};
+
+
+const render = function () {
+    //console.log('render ran');
+    // Filter item list if store prop is true by item.checked === false
+    //let form = generateForm();
     
     const bookmarkListItemsString = generateBookmarkListString(store.bookmarks);
     
     $('.js-bookmark-list').html(bookmarkListItemsString);
-    $('.add-new-bookmark-form').html(form);
+    $('.add-new-bookmark-form').html(generateForm());
 };
 
 /*const addBookmark = function () {
@@ -81,6 +86,7 @@ const handleCreateNewBookmark = function () {
         event.preventDefault();
         store.adding = true;
         render();
+        // handleNewBookmarkSubmit();
     })
     
 };
@@ -93,22 +99,35 @@ const handleCancelBookmark = function (){
 }
 
 const handleNewBookmarkSubmit = function () {
-    $('.js-bookmark-list').on('submit', '.create-button', event => {
+    
+    // $( "#js-bookmark-list-form" ).submit(function( event ) 
+    // { alert( "Handler for .submit() called." ); 
+   
+    // event.preventDefault(); });
+    
+    $('body').on('click', '.create-button', event => {
+       // alert('anything');
         event.preventDefault();
+        let newUrlName = $('.input-book').val();
+       let newBookmarkDesc = $('#text-area').val();
+       let newBookmarkName = $('.bookmark-title').val();
+       let newRating = parseInt($('.star-select').val());
+       const newBookmarkEntry = {
+        title: newBookmarkName,
+        url: newUrlName,
+        desc: newBookmarkDesc,
+        rating: newRating
+      };
 
-let formElement = $('.create-button')[0];
-console.log( serializeJson(formElement) );
-
-        let newBmarkTitle = serializeJson(formElement);
        
-        api.createBookmarks(newBmarkTitle)
+        api.createBookmark(newBookmarkEntry)
             .then(res => res.json())
             .then(newItem => {
                 store.addNewBookmark(newItem);
                 store.adding = false;
                 render();
             })
-        // store.addNewBookmark(newBmarkTitle);
+        // store.addNewBookmark(newBookmarkEntry);
         // render();
     });
 };

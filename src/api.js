@@ -1,32 +1,28 @@
-const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jt';
+const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jt/bookmarks';
 
 const getBookmarks = function () {
-  return fetch(`${BASE_URL}/bookmarks`);
+  return fetch(BASE_URL);
 
 };
 
 
 const createBookmark = function (body) {
 
-  // let newBookmark = JSON.stringify({
-  //   title,
-  //   rating,
-  //   url,
-  //   desc,
+  let newBookmark = JSON.stringify(body);
+   console.log(newBookmark);
+  
 
-  // });
-
-  return fetch(`${BASE_URL}/bookmarks`, {
+  return fetch((BASE_URL), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: body
+    body: newBookmark
   });
 };
 
 const updateBookmark = function (id, updateData) {
-  return fetch(`${BASE_URL}/bookmarks/${id}`, {
+  return fetch(`${BASE_URL}/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
