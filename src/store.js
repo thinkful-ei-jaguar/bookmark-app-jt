@@ -2,7 +2,7 @@ const bookmarks = [];
   let adding = false;
   let error =null;
   let filter = 0;
-  
+  let currentFilter = 1;
 
   const findById = function (id) {
     return bookmarks.find(currentBookmark => currentBookmark.id === id);
@@ -14,14 +14,13 @@ const filterBy = function () {
 
 const toggleBookmark = function (id){
 let bookmark = findById(id);
-console.log(id);
 bookmark.expanded = !bookmark.expanded; 
 
 
 }
 
 const addNewBookmark = function (bmark) {
-  bmark.expanded = false;  
+  bmark.expanded = false; 
   bookmarks.push(bmark);
 
 };
@@ -44,6 +43,7 @@ bookmarks,
 adding,
 error,
 filter,
+currentFilter,
 findById,
 filterBy,
 addNewBookmark,

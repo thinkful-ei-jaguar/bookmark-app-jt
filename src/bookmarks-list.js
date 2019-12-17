@@ -40,11 +40,11 @@ const generateForm = function () {
         <input class='input-book' type='text'  name='url' id='add-book' placeholder='link to website' required></input><br>
         <input type="text" class="bookmark-title"name="title" placeholder="bookmark name"></input><br>
         <select class="star-select" type="radio" >
-          <option value="1">1 star</option>
-          <option value="2">2 stars</option>
-          <option value="3">3 stars</option>
-          <option value="4">4 stars</option>
-          <option value="5">5 stars</option>
+          <option class="fa fa-star checked" value="1">1 Star</i></option>
+          <option class="fa fa-star checked" value="2">2 stars</option>
+          <option class="fa fa-star checked" value="3">3 stars</option>
+          <option class="fa fa-star checked" value="4">4 stars</option>
+          <option class="fa fa-star checked" value="5">5 stars</option>
         </select><br>
         <textarea name="" id="text-area" cols="30" rows="10"></textarea><br>
         <button type="reset" class="cancel-button">Cancel</button> <button  class="create-button">Create</button>
@@ -79,11 +79,17 @@ const handleCloseError = function () {
 
 const render = function () {
     renderError();
+    
 
     const bookmarkListItemsString = generateBookmarkListString(store.bookmarks);
 
     $('.js-bookmark-list').html(bookmarkListItemsString);
     $('.add-new-bookmark-form').html(generateForm());
+    
+    const itemsToShow = store.bookmarks.filter(item => item.rating >= store.currentFilter);
+    const itemsString = itemsToShow.map(item => generateBookmarkElement(item)
+    );
+    $('.js-bookmark-list').html(itemsString.join(''));
 };
 
 const handleCreateNewBookmark = function () {
@@ -108,7 +114,7 @@ const handleNewBookmarkSubmit = function () {
         let newUrlName = $('.input-book').val();
         let newBookmarkDesc = $('#text-area').val();
         let newBookmarkName = $('.bookmark-title').val();
-        let newRating = parseInt($('.star-select').val());
+        let newRating =$('.checked').val();
         const newBookmarkEntry = {
             title: newBookmarkName,
             url: newUrlName,
@@ -160,17 +166,20 @@ const handleExpandInfo = function () {
     });
 };
 
-// const handleToggleFilterClick = function () {
-
-// };
-
+const handleFilterChange = function () {
+    $('.js-select-rating').on('change', function(e){
+    const selected = Number(e.target.value);
+    store.currentFilter = selected;  
+    render();
+  })
+};
 
 const bindEventListeners = function () {
     handleCreateNewBookmark();
     handleNewBookmarkSubmit();
     handleDeleteBookmarkClicked();
     handleCancelBookmark();
-    //handleToggleFilterClick();
+    handleFilterChange();
     handleExpandInfo();
     handleCloseError();
 };
