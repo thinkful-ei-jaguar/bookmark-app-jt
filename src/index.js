@@ -11,12 +11,6 @@ const main = function () {
   .then((items) => {
     items.forEach((item) => store.addNewBookmark(item));
     bookmarksList.render();
-
-      // const item = store.bookmarks[0];
-      // console.log('current name: ' + item.title);
-      // store.findAndUpdate(item.id, { name: 'barbaz' });
-      // console.log('new name: ' + item.title);
-
     });
   bookmarksList.bindEventListeners();
   bookmarksList.render();

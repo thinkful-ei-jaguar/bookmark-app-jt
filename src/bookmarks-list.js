@@ -24,6 +24,9 @@ const generateBookmarkElement = function (bMark) {
       ${expandedInfo}
     </li><br>`;
 };
+
+
+
 const generateBookmarkListString = function (bookmarkList) {
     const bMs = bookmarkList.map((bM) => {
         const bookmarkString = generateBookmarkElement(bM)
