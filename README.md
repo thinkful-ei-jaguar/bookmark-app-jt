@@ -26,3 +26,4 @@ I can select from a dropdown (a <select> element) a "minimum rating" to filter t
 7. (Extension feature - optional) I can edit the rating and description of a bookmark in my list
 -- I was unable to get this one done. 
 
+https://thinkful-ei-jaguar.github.io/bookmark-app-jt/
