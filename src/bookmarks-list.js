@@ -40,11 +40,11 @@ const generateForm = function () {
         <input class='input-book' type='text'  name='url' id='add-book' placeholder='link to website' required></input><br>
         <input type="text" class="bookmark-title"name="title" placeholder="bookmark name"></input><br>
         <select class="star-select" type="radio" >
-          <option class="fa fa-star checked" value="1 Star">1 Star</i></option>
-          <option class="fa fa-star checked" value="2">2 stars</option>
-          <option class="fa fa-star checked" value="3">3 stars</option>
-          <option class="fa fa-star checked" value="4">4 stars</option>
-          <option class="fa fa-star checked" value="5">5 stars</option>
+          <option value="1">1 Star</i></option>
+          <option  value="2">2 stars</option>
+          <option  value="3">3 stars</option>
+          <option  value="4">4 stars</option>
+          <option value="5">5 stars</option>
         </select><br>
         <textarea name="" id="text-area" cols="30" rows="10"></textarea><br>
         <button type="reset" class="cancel-button">Cancel</button> <button  class="create-button">Create</button>

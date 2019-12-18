@@ -8,6 +8,7 @@ body {
 
 h1 {
   text-align: center;
+  text-shadow: 2px 2px 2px #CCCCCC;
 }
 
 .container {
@@ -22,9 +23,23 @@ ul {
   padding-inline-start: 0;
 }
 .bookmark-list {
+  padding: 10px;
+  margin-top: 0;
   margin-left: 300px;
   margin-right: 300px;
-  border: 2pt solid black;
+  border: 1pt solid black;
+}
+#js-bookmark-list-form {
+  padding: 10px;
+  margin-left: 300px;
+  margin-right: 300px;
+  margin-bottom: 0;
+  border: 1pt solid black;
+}
+
+.js-bookmark-entry {
+  padding: 5px;
+  border-bottom: 300px;
 }
 .error-container {
   color: red;
