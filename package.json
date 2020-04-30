@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/thinkful-ei-jaguar/bookmark-app-jt#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "css-loader": "^3.3.2",
